@@ -71,28 +71,39 @@ class Chatbot:
             return None
 
     def carregar_sub_arvore(self, arquivo):
-        """Carrega uma sub-árvore de decisões a partir de um arquivo JSON."""
+        """Carrega a subárvore de decisão a partir de um arquivo JSON."""
         try:
-            with open(arquivo, "r", encoding="utf-8") as file:
-                return json.load(file)
+            with open(arquivo, "r", encoding="utf-8") as f:
+                return json.load(f)
         except FileNotFoundError:
-            print(f"Arquivo de sub-árvore não encontrado: {arquivo}")
+            print(f"Erro: Arquivo {arquivo} não encontrado.")
             return None
         except json.JSONDecodeError:
-            print(f"Erro ao decodificar o arquivo JSON: {arquivo}")
+            print(f"Erro: Arquivo {arquivo} está mal formatado.")
             return None
-
+    # Mexer nisso aqui e extremamente perigoso/infernal!!
     def get_response_from_decision_tree(self, user_input):
-        """Processa a entrada do usuário e retorna a resposta da árvore de decisões."""
+        """Processa a entrada do usuário e retorna a resposta e sugestões da subárvore correspondente."""
+        print(f"Processando entrada: {user_input}")  # Debug
         for item in self.decision_tree["NODOS"]:
+            print(f"Verificando nó: {item['pergunta']}")  # Debug
             if item["pergunta"].lower() in user_input.lower():
+                print(f"Nó correspondente encontrado: {item['pergunta']}")  # Debug
                 if item.get("proxima_acao") == "carregar_arquivo":
+                    print(f"Carregando subárvore do arquivo: {item['arquivo']}")  # Debug
                     sub_arvore = self.carregar_sub_arvore(item["arquivo"])
                     if sub_arvore:
-                        return sub_arvore["resposta"], sub_arvore["sugestoes"]
+                        print(f"Subárvore carregada: {sub_arvore}")  # Debug
+                        return sub_arvore.get("resposta"), sub_arvore.get("sugestoes", [])
+                    else:
+                        print("Erro: Subárvore não carregada.")  # Debug
+                        return None, []
                 else:
-                    return item["resposta"], item["sugestoes"]
-        return None, self.decision_tree["sugestoes_gerais"]
+                    print(f"Retornando resposta do nó atual: {item.get('resposta')}")  # Debug
+                    return item.get("resposta"), item.get("sugestoes", [])
+        
+        print("Nenhum nó correspondente encontrado.")  # Debug
+        return None, []
 
     def start_conversation(self):
         print(self.welcome_message)
