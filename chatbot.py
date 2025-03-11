@@ -4,9 +4,6 @@ from urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-#sk-466cce591e2c4307a07f9263df2912b3  https://api.deepseek.com/chat/completions DEPSEEK
-#LKGCUmReB97Oqdi7qdbfWRSj8cMd305r https://api.deepinfra.com/v1/openai/chat/completions DEEPINFRA
-
 class Chatbot:
     def __init__(
         self,
@@ -29,7 +26,6 @@ class Chatbot:
         self.decision_tree = decision_tree
         self.conversation_history = [{"role": "system", "content": self.system_prompt}]
 
-    #Método anterior (usando a API da Deepseek) comentado
     def send_message(self, messages):
         headers = {
             "Content-Type": "application/json",
@@ -74,12 +70,30 @@ class Chatbot:
             print(f"Erro na requisição: {e}")
             return None
 
+    def carregar_sub_arvore(self, arquivo):
+        """Carrega uma sub-árvore de decisões a partir de um arquivo JSON."""
+        try:
+            with open(arquivo, "r", encoding="utf-8") as file:
+                return json.load(file)
+        except FileNotFoundError:
+            print(f"Arquivo de sub-árvore não encontrado: {arquivo}")
+            return None
+        except json.JSONDecodeError:
+            print(f"Erro ao decodificar o arquivo JSON: {arquivo}")
+            return None
+
     def get_response_from_decision_tree(self, user_input):
+        """Processa a entrada do usuário e retorna a resposta da árvore de decisões."""
         for item in self.decision_tree["NODOS"]:
             if item["pergunta"].lower() in user_input.lower():
-                return item["resposta"], item["sugestoes"]
+                if item.get("proxima_acao") == "carregar_arquivo":
+                    sub_arvore = self.carregar_sub_arvore(item["arquivo"])
+                    if sub_arvore:
+                        return sub_arvore["resposta"], sub_arvore["sugestoes"]
+                else:
+                    return item["resposta"], item["sugestoes"]
         return None, self.decision_tree["sugestoes_gerais"]
-    
+
     def start_conversation(self):
         print(self.welcome_message)
         
@@ -101,7 +115,6 @@ class Chatbot:
             else:
                 api_response = self.send_message(self.conversation_history)
                 if api_response:
-                    # Aqui, api_response já é a mensagem do assistente (string)
                     self.conversation_history.append({"role": "assistant", "content": api_response})
                 else:
                     print(self.error_message)
