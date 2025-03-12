@@ -6,43 +6,681 @@
   "CHATBOT_FOCUS": "suporte técnico", 
   "DECISION_TREE": {
     "NODOS": [
-      {
-        "pergunta": "Como posso ser mais produtivo?",
-        "resposta": "Para ser mais produtivo, recomendo usar ferramentas como Trello ou Notion para gerenciar tarefas. Além disso, temos soluções de automação que podem otimizar seu tempo. Quer saber mais?",
-        "sugestoes": [
-          "Ferramentas de produtividade",
-          "Automação de processos",
-          "Consultoria em TI",
-          "Comer Hotdog"
-        ]
-      },
-      {
-        "pergunta": "O que é automação?",
-        "resposta": "Automação é o uso de tecnologia para realizar tarefas repetitivas de forma automática, economizando tempo e reduzindo erros. Aqui na empresa, desenvolvemos soluções personalizadas. Posso te explicar melhor!",
-        "sugestoes": [
-          "Soluções de automação",
-          "Consultoria em TI",
-          "Desenvolvimento de software"
-        ]
-      },
-      {
-        "pergunta": "Preciso de suporte técnico.",
-        "resposta": "Claro! Posso te ajudar com suporte técnico. Me conte qual é o problema, e vamos resolver juntos!",
-        "sugestoes": [
-          "Suporte remoto",
-          "Manutenção de hardware",
-          "Atualização de software"
-        ]
-      },
-      {
-        "pergunta": "Quais serviços vocês oferecem?",
-        "resposta": "Oferecemos desenvolvimento de software, consultoria em TI e suporte técnico. Temos soluções personalizadas para pequenas e médias empresas. Posso te explicar mais sobre algum serviço específico!",
-        "sugestoes": [
-          "Desenvolvimento de software",
-          "Consultoria em TI",
-          "Suporte técnico"
-        ]
-      }
+        {
+            "pergunta": "Quais produtos vocês vendem?",
+            "resposta": "Você pode conferir todos nossos produtos em nosso cardápio: https://pedir.delivery/app/frangariajk/menu",
+            "sugestoes": [
+                "Acessar cardápio",
+                "Fazer um pedido",
+                "Voltar ao início"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Teruel",
+            "resposta": "Super Combo Teruel - R$34.9. Lanche gourmet com duas tiras de frango crocante, bacon, molho da casa, tomate, alface, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Vitoria",
+            "resposta": "Super Combo Vitoria - R$34.9. Lanche gourmet com filé de peito de frango crocante, queijo mussarela, tomate, alface americana, maionese da casa, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Valverde",
+            "resposta": "Super Combo Valverde - R$34.9. Lanche gourmet com duas tiras de frango crocante, queijo cheddar, molho barbecue, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Valência",
+            "resposta": "Super Combo Valência - R$39.9. Lanche gourmet com hambúrguer de costela 140g, cebola à milanesa, queijo mussarela, tomate, maionese da casa, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Ibiza",
+            "resposta": "Super Combo Ibiza - R$39.9. Lanche gourmet com dois hambúrgueres de fraldinha 100g, cebola roxa, picles, queijo cheddar, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Ávila",
+            "resposta": "Super Combo Ávila - R$36.9. Lanche gourmet com hambúrguer de calabresa 120g, cebola caramelizada, queijo mussarela, tomate, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Super Combo Salamanca",
+            "resposta": "Super Combo Salamanca - R$41.9. Lanche gourmet com hambúrguer de picanha 150g, queijo mussarela, bacon, tomate, pão tostado na manteiga + 200g de fritas + refrigerante lata 350ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Arroz Branco",
+            "resposta": "Arroz Branco - R$12.0. Arroz branco temperado com alho e sal (250g).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Arroz Carreteiro",
+            "resposta": "Arroz Carreteiro - R$16.0. Arroz carreteiro com carne seca, alho, cebola, linguiça calabresa, salsinha e sal (300g).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Feijão Tropeiro",
+            "resposta": "Feijão Tropeiro - R$16.0. Feijão tropeiro com feijão fradinho, farinha de mandioca, sal, bacon, linguiça calabresa, couve, cebola e alho (300g).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Maionese",
+            "resposta": "Maionese - R$13.0. Maionese com batata, cenoura, milho, ervilha, salsinha, sal e azeitona (300g).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Salpicão de Frango",
+            "resposta": "Salpicão de Frango - R$13.0. Salpicão de frango com frango desfiado, maionese, salsinha, batata palha, creme de leite, uva passas, maçã, cenoura e salsão (300g).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Balde Jk Furioso",
+            "resposta": "Balde Jk Furioso - R$45.9. Balde de tiras de frango empanadas, cheddar e bacon, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Balde Jk",
+            "resposta": "Balde Jk - R$39.9. Balde de tiras de frango empanadas, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Mini Balde Jk",
+            "resposta": "Mini Balde Jk - R$29.9. Mini balde de tiras de frango empanadas, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Drumets Tradicional",
+            "resposta": "Drumets Tradicional - R$36.9. Coxinhas da asa fritas.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Drumets Apimentado",
+            "resposta": "Drumets Apimentado - R$39.9. Coxinhas da asa fritas e apimentadas.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Drumets Empanado",
+            "resposta": "Drumets Empanado - R$39.9. Coxinhas da asa empanadas, acompanhadas de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Tulipinhas Tradicionais",
+            "resposta": "Tulipinhas Tradicionais - R$39.9. Asinhas de frango fritas.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Tulipinhas Apimentada",
+            "resposta": "Tulipinhas Apimentada - R$40.9. Asinhas de frango fritas apimentadas.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Tulipinhas Empanadas",
+            "resposta": "Tulipinhas Empanadas - R$41.9. Asinhas de frango empanadas, acompanhadas de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Frango a Passarinho Tradicional",
+            "resposta": "Frango a Passarinho Tradicional - R$38.0. Pedaços de frango frito, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Frango a Passarinho com Fritas",
+            "resposta": "Frango a Passarinho com Fritas - R$42.0. Pedaços de frango frito com fritas, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Frango a Passarinho com Polenta",
+            "resposta": "Frango a Passarinho com Polenta - R$40.0. Pedaços de frango frito com polenta, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Frango a Passarinho Empanado",
+            "resposta": "Frango a Passarinho Empanado - R$40.0. Pedaços de frango frito empanado, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Coração de Frango Empanado",
+            "resposta": "Coração de Frango Empanado - R$32.9. Corações de frango empanados, acompanhados de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Coração de Frango Refogado",
+            "resposta": "Coração de Frango Refogado - R$39.9. Corações de frango salteados na manteiga com cebola, acompanhados de torradas de pão francês.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Iscas de Frango Napolitana",
+            "resposta": "Iscas de Frango Napolitana - R$35.9. Tiras de frango grelhadas com tomate, cebola e orégano, acompanhadas de torradas de pão francês.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Contra Filé Aperitivo",
+            "resposta": "Contra Filé Aperitivo - R$69.9. Contra filé acebolado, farofa, vinagrete e torradas de pão francês.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Carne Seca com Mandioca",
+            "resposta": "Carne Seca com Mandioca - R$79.9. Carne seca desfiada com mandioca.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Peixe da Praia",
+            "resposta": "Peixe da Praia - R$59.9. Filé de pescada branca empanada, acompanhado de maionese da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Camarão Navegante",
+            "resposta": "Camarão Navegante - R$89.9. Camarões empanados, acompanhados de maionese da casa e limão.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Batata Furiosa",
+            "resposta": "Batata Furiosa - R$35.9. Batata frita com cheddar e bacon.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Batata Frita",
+            "resposta": "Batata Frita - R$32.9. Batata frita.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Polenta com Parmesão",
+            "resposta": "Polenta com Parmesão - R$33.9. Polenta frita com parmesão.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Onion Rings",
+            "resposta": "Onion Rings - R$26.0. Anéis de cebola fritos (20 unidades).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Mandioca Premium",
+            "resposta": "Mandioca Premium - R$29.0. Mandioca frita.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Calabresa Acebolada",
+            "resposta": "Calabresa Acebolada - R$37.9. Fatias de calabresa aceboladas acompanhadas de pão francês fatiado.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Mini Coxinha",
+            "resposta": "Mini Coxinha - R$18.9. Mini coxinhas recheadas com catupiry (12 unidades).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Mini Kibe",
+            "resposta": "Mini Kibe - R$18.9. Mini kibes recheados com catupiry (12 unidades).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Mini Pérolas de Queijo",
+            "resposta": "Mini Pérolas de Queijo - R$18.9. Mini bolinhas de queijo (12 unidades).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Teruel",
+            "resposta": "Teruel - R$25.9. Lanche gourmet com duas tiras de frango crocante, bacon, tomate, alface americana e maionese da casa, no pão tostado na manteiga.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Vitória",
+            "resposta": "Vitória - R$25.9. Lanche gourmet com filé de peito de frango crocante, queijo mussarela, tomate, alface americana e maionese da casa, no pão tostado na manteiga.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Valverde",
+            "resposta": "Valverde - R$25.9. Lanche gourmet com duas tiras de frango crocante, queijo cheddar e molho barbecue, no pão tostado na manteiga.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Valência",
+            "resposta": "Valência - R$29.9. Lanche gourmet com hambúrguer de costela 140g, cebola à milanesa, queijo mussarela, tomate e maionese da casa, no pão tostado na manteiga.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Ávila",
+            "resposta": "Ávila - R$25.9. Lanche gourmet com hambúrguer de calabresa 120g grelhado, cebola caramelizada, queijo mussarela e tomate, no pão tostado na manteiga.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Salamanca",
+            "resposta": "Salamanca - R$32.9. Lanche gourmet com hambúrguer de picanha 150g, queijo mussarela, bacon e tomate, no pão tostado na manteiga.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Maionese da Casa",
+            "resposta": "Maionese da Casa - R$3.0. Maionese especial da casa.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Molho Barbecue",
+            "resposta": "Molho Barbecue - R$3.0. Molho barbecue.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Queijo Cheddar",
+            "resposta": "Queijo Cheddar - R$6.0. Queijo cheddar extra.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Geleia de Pimenta",
+            "resposta": "Geleia de Pimenta - R$6.0. Geleia de pimenta (60g).",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Molho Do Chef",
+            "resposta": "Molho Do Chef - R$6.0. Molho especial do chef.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Budweiser Long Neck",
+            "resposta": "Budweiser Long Neck - R$11.0. Cerveja Budweiser long neck.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Stella Artois Long Neck",
+            "resposta": "Stella Artois Long Neck - R$11.0. Cerveja Stella Artois long neck.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Heineken Long Neck",
+            "resposta": "Heineken Long Neck - R$12.9. Cerveja Heineken long neck.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Smirnoff Ice Long Neck",
+            "resposta": "Smirnoff Ice Long Neck - R$15.0. Smirnoff Ice long neck.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Amstel Lata 269ml",
+            "resposta": "Amstel Lata 269ml - R$6.9. Cerveja Amstel lata 269ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Original Lata 269ml",
+            "resposta": "Original Lata 269ml - R$6.9. Cerveja Original lata 269ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Skol Lata 269ml",
+            "resposta": "Skol Lata 269ml - R$6.5. Cerveja Skol lata 269ml.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Água sem Gás",
+            "resposta": "Água sem Gás - R$3.0. Água sem gás.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Água com Gás",
+            "resposta": "Água com Gás - R$3.5. Água com gás.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o H2oh!",
+            "resposta": "H2oh! - R$7.9. H2oh!",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o H2oh! Limoneto",
+            "resposta": "H2oh! Limoneto - R$7.9. H2oh! Limoneto.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Coca Cola Lata",
+            "resposta": "Coca Cola Lata - R$6.9. Refrigerante Coca-Cola lata.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Guaraná Antárctica Lata",
+            "resposta": "Guaraná Antárctica Lata - R$6.5. Refrigerante Guaraná Antárctica lata.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Fanta Laranja Lata",
+            "resposta": "Fanta Laranja Lata - R$6.5. Refrigerante Fanta Laranja lata.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Fanta Uva Lata",
+            "resposta": "Fanta Uva Lata - R$6.5. Refrigerante Fanta Uva lata.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Schweppes Citrus Lata",
+            "resposta": "Schweppes Citrus Lata - R$6.9. Refrigerante Schweppes Citrus lata.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Coca Cola 2L",
+            "resposta": "Coca Cola 2L - R$18.0. Refrigerante Coca-Cola 2L.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Fanta Laranja 2L",
+            "resposta": "Fanta Laranja 2L - R$15.0. Refrigerante Fanta Laranja 2L.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Red Bull",
+            "resposta": "Red Bull - R$15.0. Energético Red Bull.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Red Bull Tropical de Maracujá",
+            "resposta": "Red Bull Tropical de Maracujá - R$15.0. Energético Red Bull Tropical de Maracujá.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Suco Del Valle Uva Lata",
+            "resposta": "Suco Del Valle Uva Lata - R$8.5. Suco Del Valle Uva lata.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        },
+        {
+            "pergunta": "Quero saber sobre o Suco Del Valle Uva 1L",
+            "resposta": "Suco Del Valle Uva 1L - R$12.0. Suco Del Valle Uva 1L.",
+            "sugestoes": [
+                "Adicionar ao pedido",
+                "Mais informações",
+                "Voltar ao cardápio"
+            ]
+        }
     ],
     "sugestoes_gerais": [
       "Ferramentas de produtividade",
