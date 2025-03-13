@@ -91,10 +91,28 @@ class Chatbot:
         pergunta_similar, score = process.extractOne(user_input, perguntas)
         
         # Define um limite de similaridade (por exemplo, 70)
-        if score > 85:
+        if score > 75:
             return pergunta_similar
         else:
             return None
+        
+    def buscar_respostas(self, user_input):
+        """Busca a resposta no decision_tree principal e nas subárvores carregadas."""
+        
+        # 1. Primeiro, verifica perguntas relacionadas
+        resposta_relacionada = self.verificar_perguntas_relacionadas(user_input)
+        if resposta_relacionada:
+            return resposta_relacionada, []
+
+        # 2. Se não encontrou em perguntas relacionadas, busca no decision_tree principal
+        resposta, sugestoes = self.get_response_from_decision_tree(user_input)
+        if resposta:
+            return resposta, sugestoes
+
+        # 3. Se ainda não encontrou, retorna None
+        return None, []
+
+
 
     def get_response_from_decision_tree(self, user_input):
         """Processa a entrada do usuário e retorna a resposta e sugestões da subárvore correspondente."""
@@ -116,55 +134,64 @@ class Chatbot:
         return None, []
 
     def verificar_perguntas_relacionadas(self, user_input):
-        """Verifica se a próxima pergunta do usuário é similar a alguma pergunta relacionada nas subárvores carregadas."""
+        """Verifica se a pergunta do usuário é similar a alguma pergunta relacionada nos NODOS principais ou nas subárvores carregadas."""
+        
+        # 1. Verifica no próprio decision_tree principal
+        for nodo in self.decision_tree["NODOS"]:
+            if "perguntas_relacionadas" in nodo:
+                perguntas = [p["pergunta"] for p in nodo["perguntas_relacionadas"]]
+                pergunta_similar = self.encontrar_pergunta_mais_similar(user_input, perguntas)
+
+                if pergunta_similar:
+                    for p in nodo["perguntas_relacionadas"]:
+                        if p["pergunta"] == pergunta_similar:
+                            # Responde e resetar o fluxo de subárvore se necessário
+                            self.sub_arvores_carregadas = []  # Reseta subárvores carregadas
+                            return p["resposta"]
+
+        # 2. Verifica nas subárvores carregadas
         for sub_arvore in self.sub_arvores_carregadas:
             if "perguntas_relacionadas" in sub_arvore:
-                perguntas = [pergunta["pergunta"] for pergunta in sub_arvore["perguntas_relacionadas"]]
+                perguntas = [p["pergunta"] for p in sub_arvore["perguntas_relacionadas"]]
                 pergunta_similar = self.encontrar_pergunta_mais_similar(user_input, perguntas)
-                
+
                 if pergunta_similar:
-                    for pergunta in sub_arvore["perguntas_relacionadas"]:
-                        if pergunta["pergunta"] == pergunta_similar:
-                            return pergunta["resposta"]
-        
-        return None
+                    for p in sub_arvore["perguntas_relacionadas"]:
+                        if p["pergunta"] == pergunta_similar:
+                            # Responde e resetar o fluxo de subárvore se necessário
+                            self.sub_arvores_carregadas = []  # Reseta subárvores carregadas
+                            return p["resposta"]
+
+        return None  # Nenhuma resposta encontrada
+
 
     def start_conversation(self):
         print(self.welcome_message)
-        
+
         while True:
             user_input = input("Você: ")
-            
+
             if user_input.upper() == self.exit_command:
                 print(self.goodbye_message)
                 break
-            
+
             self.conversation_history.append({"role": "user", "content": user_input})
-            
-            # Verifica se a pergunta é similar a alguma pergunta relacionada nas subárvores carregadas
-            resposta_relacionada = self.verificar_perguntas_relacionadas(user_input)
-            
-            if resposta_relacionada:
-                print(f"Assistente: {resposta_relacionada}")
-                self.conversation_history.append({"role": "assistant", "content": resposta_relacionada})
+
+            # Busca a resposta
+            resposta, sugestoes = self.buscar_respostas(user_input)
+
+            if resposta:
+                print(f"Assistente: {resposta}")
+
+                # Exibe sugestões, se houver
+                if sugestoes:
+                    print(f"[SUGESTÕES: {', '.join(sugestoes)}]")
+
+                self.conversation_history.append({"role": "assistant", "content": resposta})
             else:
-                # Obtém a resposta e sugestões do decision_tree
-                response, sugestoes = self.get_response_from_decision_tree(user_input)
-                
-                if response:
-                    # Exibe a resposta
-                    print(f"Assistente: {response}")
-                    
-                    # Exibe as sugestões, se houver
-                    if sugestoes:
-                        print(f"[SUGESTÕES: {', '.join(sugestoes)}]")
-                    
-                    # Adiciona a resposta ao histórico da conversa
-                    self.conversation_history.append({"role": "assistant", "content": response})
+                # Se nenhuma resposta for encontrada, usa a API
+                api_response = self.send_message(self.conversation_history)
+                if api_response:
+                    self.conversation_history.append({"role": "assistant", "content": api_response})
                 else:
-                    # Se não encontrar uma resposta no decision_tree ou nas perguntas relacionadas, usa a API
-                    api_response = self.send_message(self.conversation_history)
-                    if api_response:
-                        self.conversation_history.append({"role": "assistant", "content": api_response})
-                    else:
-                        print(self.error_message)
+                    print(self.error_message)
