@@ -1,6 +1,7 @@
 import requests
 import json
 from urllib3.exceptions import InsecureRequestWarning
+from fuzzywuzzy import process
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -25,6 +26,7 @@ class Chatbot:
         self.error_message = error_message
         self.decision_tree = decision_tree
         self.conversation_history = [{"role": "system", "content": self.system_prompt}]
+        self.sub_arvores_carregadas = []  # Lista para armazenar subárvores carregadas
 
     def send_message(self, messages):
         headers = {
@@ -74,36 +76,58 @@ class Chatbot:
         """Carrega a subárvore de decisão a partir de um arquivo JSON."""
         try:
             with open(arquivo, "r", encoding="utf-8") as f:
-                return json.load(f)
+                sub_arvore = json.load(f)
+                self.sub_arvores_carregadas.append(sub_arvore)  # Armazena a subárvore carregada
+                return sub_arvore
         except FileNotFoundError:
             print(f"Erro: Arquivo {arquivo} não encontrado.")
             return None
         except json.JSONDecodeError:
             print(f"Erro: Arquivo {arquivo} está mal formatado.")
             return None
-    # Mexer nisso aqui e extremamente perigoso/infernal!!
+
+    def encontrar_pergunta_mais_similar(self, user_input, perguntas):
+        """Encontra a pergunta mais similar usando fuzzywuzzy."""
+        pergunta_similar, score = process.extractOne(user_input, perguntas)
+        
+        # Define um limite de similaridade (por exemplo, 70)
+        if score > 85:
+            return pergunta_similar
+        else:
+            return None
+
     def get_response_from_decision_tree(self, user_input):
         """Processa a entrada do usuário e retorna a resposta e sugestões da subárvore correspondente."""
-        print(f"Processando entrada: {user_input}")  # Debug
-        for item in self.decision_tree["NODOS"]:
-            print(f"Verificando nó: {item['pergunta']}")  # Debug
-            if item["pergunta"].lower() in user_input.lower():
-                print(f"Nó correspondente encontrado: {item['pergunta']}")  # Debug
-                if item.get("proxima_acao") == "carregar_arquivo":
-                    print(f"Carregando subárvore do arquivo: {item['arquivo']}")  # Debug
-                    sub_arvore = self.carregar_sub_arvore(item["arquivo"])
-                    if sub_arvore:
-                        print(f"Subárvore carregada: {sub_arvore}")  # Debug
-                        return sub_arvore.get("resposta"), sub_arvore.get("sugestoes", [])
-                    else:
-                        print("Erro: Subárvore não carregada.")  # Debug
-                        return None, []
-                else:
-                    print(f"Retornando resposta do nó atual: {item.get('resposta')}")  # Debug
-                    return item.get("resposta"), item.get("sugestoes", [])
+        pergunta_similar = self.encontrar_pergunta_mais_similar(user_input, [item["pergunta"] for item in self.decision_tree["NODOS"]])
         
-        print("Nenhum nó correspondente encontrado.")  # Debug
+        if pergunta_similar:
+            for item in self.decision_tree["NODOS"]:
+                if item["pergunta"] == pergunta_similar:
+                    if item.get("proxima_acao") == "carregar_arquivo":
+                        sub_arvore = self.carregar_sub_arvore(item["arquivo"])
+                        if sub_arvore:
+                            # Retorna a resposta e sugestões da subárvore
+                            return sub_arvore.get("resposta"), sub_arvore.get("sugestoes", [])
+                        else:
+                            return None, []
+                    else:
+                        return item.get("resposta"), item.get("sugestoes", [])
+        
         return None, []
+
+    def verificar_perguntas_relacionadas(self, user_input):
+        """Verifica se a próxima pergunta do usuário é similar a alguma pergunta relacionada nas subárvores carregadas."""
+        for sub_arvore in self.sub_arvores_carregadas:
+            if "perguntas_relacionadas" in sub_arvore:
+                perguntas = [pergunta["pergunta"] for pergunta in sub_arvore["perguntas_relacionadas"]]
+                pergunta_similar = self.encontrar_pergunta_mais_similar(user_input, perguntas)
+                
+                if pergunta_similar:
+                    for pergunta in sub_arvore["perguntas_relacionadas"]:
+                        if pergunta["pergunta"] == pergunta_similar:
+                            return pergunta["resposta"]
+        
+        return None
 
     def start_conversation(self):
         print(self.welcome_message)
@@ -117,15 +141,30 @@ class Chatbot:
             
             self.conversation_history.append({"role": "user", "content": user_input})
             
-            response, sugestoes = self.get_response_from_decision_tree(user_input)
+            # Verifica se a pergunta é similar a alguma pergunta relacionada nas subárvores carregadas
+            resposta_relacionada = self.verificar_perguntas_relacionadas(user_input)
             
-            if response:
-                if sugestoes:
-                    print(f"[SUGESTÕES: {', '.join(sugestoes)}]")
-                self.conversation_history.append({"role": "assistant", "content": response})
+            if resposta_relacionada:
+                print(f"Assistente: {resposta_relacionada}")
+                self.conversation_history.append({"role": "assistant", "content": resposta_relacionada})
             else:
-                api_response = self.send_message(self.conversation_history)
-                if api_response:
-                    self.conversation_history.append({"role": "assistant", "content": api_response})
+                # Obtém a resposta e sugestões do decision_tree
+                response, sugestoes = self.get_response_from_decision_tree(user_input)
+                
+                if response:
+                    # Exibe a resposta
+                    print(f"Assistente: {response}")
+                    
+                    # Exibe as sugestões, se houver
+                    if sugestoes:
+                        print(f"[SUGESTÕES: {', '.join(sugestoes)}]")
+                    
+                    # Adiciona a resposta ao histórico da conversa
+                    self.conversation_history.append({"role": "assistant", "content": response})
                 else:
-                    print(self.error_message)
+                    # Se não encontrar uma resposta no decision_tree ou nas perguntas relacionadas, usa a API
+                    api_response = self.send_message(self.conversation_history)
+                    if api_response:
+                        self.conversation_history.append({"role": "assistant", "content": api_response})
+                    else:
+                        print(self.error_message)

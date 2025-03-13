@@ -1,9 +1,27 @@
 {
   "pergunta": "O que é automação?",
-  "resposta": "Automação é o uso de tecnologia para realizar tarefas repetitivas de forma automática, economizando tempo e reduzindo erros. Aqui na empresa, desenvolvemos soluções personalizadas. Posso te explicar melhor!",
+  "resposta": "Automação é o uso de tecnologias para realizar tarefas com mínima intervenção humana, aumentando a eficiência e reduzindo erros. Isso pode incluir desde softwares até robôs físicos.",
   "sugestoes": [
     "Soluções de automação",
     "Consultoria em TI",
     "Desenvolvimento de software"
+  ],
+  "perguntas_relacionadas": [
+    {
+      "pergunta": "Quais são os benefícios da automação?",
+      "resposta": "Os benefícios da automação incluem redução de custos, aumento da produtividade, diminuição de erros humanos e melhoria na qualidade dos processos."
+    },
+    {
+      "pergunta": "Quais são os tipos de automação?",
+      "resposta": "Existem vários tipos de automação, como automação industrial, automação de processos de negócios (BPA), automação de testes de software e automação residencial."
+    },
+    {
+      "pergunta": "Como a automação pode ser aplicada?",
+      "resposta": "A automação pode ser aplicada em diversos setores, como manufatura, saúde, finanças, varejo e até mesmo em tarefas domésticas."
+    },
+    {
+      "pergunta": "Quais são as ferramentas de automação mais usadas?",
+      "resposta": "Algumas ferramentas populares de automação incluem Python para scripts, Zapier para automação de workflows, Selenium para automação de testes e RPA (Robotic Process Automation) para automação de processos empresariais."
+    }
   ]
 }
