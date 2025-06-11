@@ -1,8 +1,12 @@
 import json
+import os
 
 class ConfigManager:
     def __init__(self, config_file_path):
-        self.config_file_path = config_file_path
+        # Get the directory where this script is located
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        # Join with the config file path
+        self.config_file_path = os.path.join(script_dir, config_file_path)
         self.config = self._load_config()
 
     def _load_config(self):

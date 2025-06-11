@@ -10,8 +10,7 @@ def main():
     system_prompt = config["SYSTEM_PROMPT"].format(
         BUSINESS_TYPE=config["BUSINESS_TYPE"],
         BUSINESS_DETAILS=config["BUSINESS_DETAILS"],
-        CHATBOT_FOCUS=config["CHATBOT_FOCUS"],
-        DECISION_TREE=config["DECISION_TREE"]
+        CHATBOT_FOCUS=config["CHATBOT_FOCUS"]
     )
     welcome_message = config["WELCOME_MESSAGE"].format(
         BUSINESS_TYPE=config["BUSINESS_TYPE"],
