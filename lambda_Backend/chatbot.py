@@ -17,9 +17,14 @@ class Chatbot:
         welcome_message: str,
         goodbye_message: str,
         error_message: str,
-        decision_tree: dict
+        decision_tree: dict,
+        rag_catalog: str = None
             ):
-        self.system_prompt = system_prompt  # Use the configured system_prompt instead of hardcoded one
+        # Combine system prompt with RAG catalog if provided
+        if rag_catalog:
+            self.system_prompt = f"{system_prompt}\n\n# CATÁLOGO E INFORMAÇÕES TÉCNICAS:\n{rag_catalog}"
+        else:
+            self.system_prompt = system_prompt
 
         self.api_key = api_key
         self.api_url = api_url

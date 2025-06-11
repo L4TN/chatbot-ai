@@ -32,7 +32,8 @@ chatbot = Chatbot(
     welcome_message=welcome_message,
     goodbye_message=config["GOODBYE_MESSAGE"],
     error_message=config["ERROR_MESSAGE"],
-    decision_tree=config["DECISION_TREE"]
+    decision_tree=config["DECISION_TREE"],
+    rag_catalog=config.get("RAG_CATALOG")
 )
 
 @app.route('/receive-message', methods=['POST'])
